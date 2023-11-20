@@ -30,5 +30,10 @@ return [
         'secret' => env('AWS_SECRET_ACCESS_KEY'),
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
+    'druo' => [
+        'key' => env('DRUO_CLIENT_ID'),
+        'secret' => env('DRUO_SECRET_KEY'),
+        'tenant' => env('DRUO_TENANT_ID')
+    ]
 
 ];
