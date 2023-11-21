@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\ConnectAccountController;
+use App\Http\Controllers\EndUserController;
+use App\Http\Controllers\OauthController;
 use App\Http\Controllers\PaymentController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -18,5 +21,7 @@ use Illuminate\Support\Facades\Route;
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
-Route::get('/token', [PaymentController::class, 'oauthToken']);
+Route::get('/token', [OauthController::class, 'oauthToken']);
 Route::get('/pagar', [PaymentController::class, 'payments']);
+Route::get('/crear-usuario-final', [EndUserController::class, 'store']);
+Route::get('/enviar-link', [ConnectAccountController::class, 'connectLink']);
