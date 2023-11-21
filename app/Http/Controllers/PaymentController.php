@@ -37,33 +37,23 @@ class PaymentController extends Controller
             "funding_source_id" => "acc_8e2964c3-7ba1-4d15-8887-d7bd71533254"
         ];
 
-        // Realizar la solicitud a la API de Druo
         $response = Http::withHeaders([
             "DRUO-Version" => "2021-11-22",
             "Content-Type" => "application/json",
-            "Authorization" => "Bearer $token" // Reemplaza ACCESS_TOKEN
+            "Authorization" => "Bearer $token"
         ])->post('https://api.druo.com/payments/create', $data);
 
-        // Manejar la respuesta de la solicitud
         if ($response->successful()) {
-            // La solicitud fue exitosa (código de respuesta en el rango 2xx)
-            $responseData = $response->json(); // Obtener los datos de la respuesta en formato JSON
+            $responseData = $response->json(); 
 
-            // Aquí puedes manejar los datos de la respuesta, por ejemplo:
             $paymentId = $responseData['payment_id'];
-            // ...hacer algo con el ID del pago
 
-            // Retornar la respuesta o hacer más acciones con ella según tu lógica de aplicación
             return response()->json($responseData);
         } else {
-            // La solicitud no fue exitosa, manejar el error
-            $errorResponse = $response->json(); // Obtener los datos del error en formato JSON
+            $errorResponse = $response->json(); 
 
-            // Aquí puedes manejar el error, por ejemplo:
             $errorMessage = $errorResponse['message'];
-            // ...hacer algo con el mensaje de error
 
-            // Retornar un mensaje de error o realizar acciones según tu lógica de manejo de errores
             return response()->json(['error' => $errorMessage], $response->status());
         }
     }
@@ -71,7 +61,6 @@ class PaymentController extends Controller
     public function payments()
     {
 
-        // Tu lógica para obtener el ACCESS_TOKEN, por ejemplo, desde la autenticación de tu usuario
         $accessToken = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InpSWGlvX2FPUjBjbDdoQloxZXVzeiJ9.eyJpc3MiOiJodHRwczovL2F1dGguZHJ1by5jb20vIiwic3ViIjoiSGd2aTFKTkR4Q2NmOE9vUG5oVGQwR3puWXRhT1BKQ3dAY2xpZW50cyIsImF1ZCI6Imh0dHBzOi8vZHJ1by1tZXJjaGFudC1hcGkuY29tIiwiaWF0IjoxNzAwNTcyOTAyLCJleHAiOjE3MDA2NTkzMDAsImF6cCI6IkhndmkxSk5EeENjZjhPb1BuaFRkMEd6bll0YU9QSkN3Iiwic2NvcGUiOiJyZWFkOnRyYW5zYWN0aW9ucyB3cml0ZTp0cmFuc2FjdGlvbnMgcmVhZDpjb25uZWN0IHdyaXRlOmNvbm5lY3Qgd3JpdGU6cGF5bWVudHMgcmVhZDpwYXltZW50cyByZWFkOmNvbm5lY3QtbGluayB3cml0ZTpjb25uZWN0LWxpbmsgd3JpdGU6YWNjb3VudHMgcmVhZDphY2NvdW50cyByZWFkOmVuZC11c2VycyB3cml0ZTplbmQtdXNlcnMiLCJndHkiOiJjbGllbnQtY3JlZGVudGlhbHMifQ.pL0hd_sfyg-wj0uIaXOCw4oJMMfJuWLZYH3_2dQMC0kEh0kMAhFi6qdBslrpxjYTJ_3DN8uUKC6XlnxZc3Pcv8OZ-4F4FmHbl03ER-_0ibeZhqSW0G4biIgnszWMt3CCmD8KRpi9saHJHpBmpbar5HlzGs9JmM40vUg1crvUaLWZZi0abGcju-feCL9BPQTUfpWdY1_g6GDSF9A-gydHQeaUQxiwUbHaF3hwo5R8UHnUq5YVM6w3lp0DsHfIHDJl5Zl-_4yiRs1xLCXb9fa29ndDww7-TeH5uF8XYr-u0_kYb7z5GHycwf8CeTbGY5CL1YLnubAa8GELn5AICh991g';
 
         $response = Http::withHeaders([
@@ -88,15 +77,11 @@ class PaymentController extends Controller
         ]);
 
         if ($response->successful()) {
-            // Si la solicitud fue exitosa, puedes acceder a los datos de la respuesta
             $responseData = $response->json();
-            // Hacer algo con $responseData, por ejemplo:
             return response()->json($responseData);
         } else {
-            // Si hubo un error en la solicitud, puedes manejarlo aquí
             $errorCode = $response->status();
             $errorResponse = $response->json();
-            // Hacer algo con el error, por ejemplo:
             return response()->json(['error' => $errorResponse], $errorCode);
         }
     }
@@ -126,10 +111,8 @@ class PaymentController extends Controller
 
         if ($response->successful()) {
             $token = $response['access_token'];
-            // Utiliza el token para acceder a la API de DRUO
             return $response->json();
         } else {
-            // Manejar la respuesta de error si la solicitud no fue exitosa
             $error = $response->json();
             return $error;
         }
