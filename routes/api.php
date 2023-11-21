@@ -18,5 +18,5 @@ use Illuminate\Support\Facades\Route;
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
-
+Route::get('/token', [PaymentController::class, 'oauthToken']);
 Route::get('/pagar', [PaymentController::class, 'payments']);
