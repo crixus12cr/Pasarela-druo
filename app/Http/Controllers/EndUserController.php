@@ -9,10 +9,11 @@ class EndUserController extends Controller
 {
     public function store()
     {
+        $token = '';
 
         $response = Http::withHeaders([
             'Content-Type' => 'application/json',
-            'Authorization' => 'Bearer ACCESS_TOKEN',
+            'Authorization' => 'Bearer '. $token,
         ])->post('https://api.druo.com/end-users/create', [
             'type' => 'INDIVIDUAL',
             'email' => 'john.doe@example.com',
