@@ -72,7 +72,7 @@ class PaymentController extends Controller
     {
 
         // Tu lógica para obtener el ACCESS_TOKEN, por ejemplo, desde la autenticación de tu usuario
-        $accessToken = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InpSWGlvX2FPUjBjbDdoQloxZXVzeiJ9.eyJpc3MiOiJodHRwczovL2F1dGguZHJ1by5jb20vIiwic3ViIjoiSGd2aTFKTkR4Q2NmOE9vUG5oVGQwR3puWXRhT1BKQ3dAY2xpZW50cyIsImF1ZCI6Imh0dHBzOi8vZHJ1by1tZXJjaGFudC1hcGkuY29tIiwiaWF0IjoxNzAwNTY4MDc1LCJleHAiOjE3MDA2NTQ0NzMsImF6cCI6IkhndmkxSk5EeENjZjhPb1BuaFRkMEd6bll0YU9QSkN3Iiwic2NvcGUiOiJyZWFkOnRyYW5zYWN0aW9ucyB3cml0ZTp0cmFuc2FjdGlvbnMgcmVhZDpjb25uZWN0IHdyaXRlOmNvbm5lY3Qgd3JpdGU6cGF5bWVudHMgcmVhZDpwYXltZW50cyByZWFkOmNvbm5lY3QtbGluayB3cml0ZTpjb25uZWN0LWxpbmsgd3JpdGU6YWNjb3VudHMgcmVhZDphY2NvdW50cyByZWFkOmVuZC11c2VycyB3cml0ZTplbmQtdXNlcnMiLCJndHkiOiJjbGllbnQtY3JlZGVudGlhbHMifQ.RUOG8Z6_0eK1XBehVo1DslTPUMqoJ5vBA0EqiMK6TtIoJjgtiz1Xs53sLWdz2HoqQ__Q1g_AcMPkCoYNSVNELL-U4RKqKOuM9Iex98082rd7-Xw6Yc1n8skt8mzCeozpCOlBIFtLyppumxi86d1idk5sVU8X3K8zrYBTFNW380VtUybnGnnPOV8AVKM9deIRBNtaz_3VkXQEnUnQoXKEc99rDOERp3XHXLkCTbJmPNmhnnqRh8vaZZ81RZiISUaFD6I4XA0lrF07HSN44YP16_ymw2Sbcze2H6SoH7j91Ixa8pW9OE5ZC6_TULrKbmzb7VKnfoOK0mp9V7hW-tdbug';
+        $accessToken = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InpSWGlvX2FPUjBjbDdoQloxZXVzeiJ9.eyJpc3MiOiJodHRwczovL2F1dGguZHJ1by5jb20vIiwic3ViIjoiSGd2aTFKTkR4Q2NmOE9vUG5oVGQwR3puWXRhT1BKQ3dAY2xpZW50cyIsImF1ZCI6Imh0dHBzOi8vZHJ1by1tZXJjaGFudC1hcGkuY29tIiwiaWF0IjoxNzAwNTcyOTAyLCJleHAiOjE3MDA2NTkzMDAsImF6cCI6IkhndmkxSk5EeENjZjhPb1BuaFRkMEd6bll0YU9QSkN3Iiwic2NvcGUiOiJyZWFkOnRyYW5zYWN0aW9ucyB3cml0ZTp0cmFuc2FjdGlvbnMgcmVhZDpjb25uZWN0IHdyaXRlOmNvbm5lY3Qgd3JpdGU6cGF5bWVudHMgcmVhZDpwYXltZW50cyByZWFkOmNvbm5lY3QtbGluayB3cml0ZTpjb25uZWN0LWxpbmsgd3JpdGU6YWNjb3VudHMgcmVhZDphY2NvdW50cyByZWFkOmVuZC11c2VycyB3cml0ZTplbmQtdXNlcnMiLCJndHkiOiJjbGllbnQtY3JlZGVudGlhbHMifQ.pL0hd_sfyg-wj0uIaXOCw4oJMMfJuWLZYH3_2dQMC0kEh0kMAhFi6qdBslrpxjYTJ_3DN8uUKC6XlnxZc3Pcv8OZ-4F4FmHbl03ER-_0ibeZhqSW0G4biIgnszWMt3CCmD8KRpi9saHJHpBmpbar5HlzGs9JmM40vUg1crvUaLWZZi0abGcju-feCL9BPQTUfpWdY1_g6GDSF9A-gydHQeaUQxiwUbHaF3hwo5R8UHnUq5YVM6w3lp0DsHfIHDJl5Zl-_4yiRs1xLCXb9fa29ndDww7-TeH5uF8XYr-u0_kYb7z5GHycwf8CeTbGY5CL1YLnubAa8GELn5AICh991g';
 
         $response = Http::withHeaders([
             'DRUO-Version' => '2021-11-22',
@@ -80,7 +80,7 @@ class PaymentController extends Controller
             'Authorization' => 'Bearer ' . $accessToken,
         ])->post('https://api.druo.com/payments/create', [
             "tenant_id" => "ten_35516d40-ca41-4fa3-885c-d13d0ccdae0a",
-            "amount" => "20000",
+            "amount" => "20000.00",
             "description" => "Insurance policy renewal - INV12324",
             "statement_descriptor" => "NOVO BILLING* INV12324",
             "auto_send_receipt" => false,
