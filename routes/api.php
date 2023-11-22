@@ -4,6 +4,7 @@ use App\Http\Controllers\ConnectAccountController;
 use App\Http\Controllers\EndUserController;
 use App\Http\Controllers\OauthController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\TestUcontacController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -25,3 +26,7 @@ Route::get('/token', [OauthController::class, 'oauthToken']);
 Route::get('/pagar', [PaymentController::class, 'payments']);
 Route::get('/crear-usuario-final', [EndUserController::class, 'store']);
 Route::get('/enviar-link', [ConnectAccountController::class, 'connectLink']);
+
+/* ---- */
+Route::get('/tokenUcontac', [TestUcontacController::class, 'tokenUcontac']);
+Route::get('/sendPlantilla', [TestUcontacController::class, 'envioHsm']);
