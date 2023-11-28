@@ -32,6 +32,9 @@ class OauthController extends Controller
 
         if ($response->successful()) {
             $token = $response['access_token'];
+            $rta = json_decode($response);
+
+            // return $rta->access_token;
             return $response->json();
         } else {
             $error = $response->json();
