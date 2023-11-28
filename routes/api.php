@@ -4,6 +4,7 @@ use App\Http\Controllers\ConnectAccountController;
 use App\Http\Controllers\EndUserController;
 use App\Http\Controllers\OauthController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\PaymentDruoController;
 use App\Http\Controllers\TestUcontacController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -30,3 +31,6 @@ Route::get('/enviar-link', [ConnectAccountController::class, 'connectLink']);
 /* ---- */
 Route::get('/tokenUcontac', [TestUcontacController::class, 'tokenUcontac']);
 Route::get('/sendPlantilla', [TestUcontacController::class, 'envioHsm']);
+
+/* checkoutLink */
+Route::get('/send-checkoutLink', [PaymentDruoController::class, 'generateCheckoutLink']);

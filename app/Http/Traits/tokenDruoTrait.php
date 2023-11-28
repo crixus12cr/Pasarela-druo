@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Http;
 
 trait tokenDruoTrait {
 
-    public function accesTokenDruo ()
+    public function accessTokenDruo ()
     {
         $response = Http::withHeaders([
             'Content-Type' => 'application/json',
