@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('bold_payments', function (Blueprint $table) {
             $table->id();
+            $table->json('data');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

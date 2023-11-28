@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('mercado_pago_payments', function (Blueprint $table) {
             $table->id();
+            $table->json('data');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('suscriptions', function (Blueprint $table) {
             $table->id();
+
+            $table ->date('start_date');
+            $table->date('end_date');
+
+            $table->string('another_description');
+
+            $table->softDeletes();
             $table->timestamps();
         });
     }

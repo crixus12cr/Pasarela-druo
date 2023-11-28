@@ -13,6 +13,17 @@ return new class extends Migration
     {
         Schema::create('quotas', function (Blueprint $table) {
             $table->id();
+
+            $table->integer('number_quota');
+            $table->date('effective_date');
+
+            $table->foreignId('suscription_id')
+           ->nullable()
+           ->constrained('suscriptions')
+           ->onUpdate('cascade')
+           ->onDelete('cascade');
+
+            $table->softDeletes();
             $table->timestamps();
         });
     }
