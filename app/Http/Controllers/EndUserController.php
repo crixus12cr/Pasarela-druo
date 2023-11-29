@@ -19,9 +19,9 @@ class EndUserController extends Controller
         ])->post('https://api.druo.com/end-users/create', [
             'type' => 'INDIVIDUAL',
             'email' => 'cperdomo@arcetec.com.co',
-            'first_name' => 'usuario_ra',
-            'last_name' => 'random',
-            'local_id' => '144782659',
+            'first_name' => 'usuarigreo_ra',
+            'last_name' => 'randdom',
+            'local_id' => '146897659',
             'local_id_type' => 'NATIONAL_IDENTITY_CARD',
             'local_id_country' => 'COL',
         ]);
