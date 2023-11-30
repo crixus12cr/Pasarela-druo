@@ -23,7 +23,7 @@ class PaymentDruoController extends Controller
             'link_name' => 'Paga_tu_plan_con_Druo',
             'transaction' => [
                 'tenant_id' => 'ten_35516d40-ca41-4fa3-885c-d13d0ccdae0a',
-                'amount' => 40000,
+                'amount' => 560000,
                 'description' => 'Paga tu primera cuota de inscripcion a nuestra plataforma Quan',
                 'statement_descriptor' => 'NOVO BILLING* INV12324',
                 'auto_send_receipt' => false,

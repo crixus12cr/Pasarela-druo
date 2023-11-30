@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Traits\tokenDruoTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
 class ConnectAccountController extends Controller
 {
 
-    public $token = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InpSWGlvX2FPUjBjbDdoQloxZXVzeiJ9.eyJpc3MiOiJodHRwczovL2F1dGguZHJ1by5jb20vIiwic3ViIjoiSGd2aTFKTkR4Q2NmOE9vUG5oVGQwR3puWXRhT1BKQ3dAY2xpZW50cyIsImF1ZCI6Imh0dHBzOi8vZHJ1by1tZXJjaGFudC1hcGkuY29tIiwiaWF0IjoxNzAwNTg0Mjg2LCJleHAiOjE3MDA2NzA2ODQsImF6cCI6IkhndmkxSk5EeENjZjhPb1BuaFRkMEd6bll0YU9QSkN3Iiwic2NvcGUiOiJyZWFkOnRyYW5zYWN0aW9ucyB3cml0ZTp0cmFuc2FjdGlvbnMgcmVhZDpjb25uZWN0IHdyaXRlOmNvbm5lY3Qgd3JpdGU6cGF5bWVudHMgcmVhZDpwYXltZW50cyByZWFkOmNvbm5lY3QtbGluayB3cml0ZTpjb25uZWN0LWxpbmsgd3JpdGU6YWNjb3VudHMgcmVhZDphY2NvdW50cyByZWFkOmVuZC11c2VycyB3cml0ZTplbmQtdXNlcnMiLCJndHkiOiJjbGllbnQtY3JlZGVudGlhbHMifQ.ls5dtsx2A-CGLxN1RhmKh2_QdPyrFFQW_Sq1yiv8NMpwTOVkarxcH9kD0XmzC-Z1PgdqI3rr4fZSybuQsHJtHoZyyG0ywZR2rnzOGoiKGCxnhdgYaHgf6mtmcu-ekJN30BQDNq-w0IkHIHgo2Ecc27IyLXLnuyzwPNANrxW5bOHGeZGBm_FqcMQytzmFHY2Q7dPmuprHSRUV_-Oko0LhGSauHbMSHCNfoxYMsf9LfTSYze0Yk8sxvw4s6IIb9rCqdK2rWaOLQkZHHpgC7Ka1mJbLZUceDZORMXfTjl_05t1dsi_OC-VMkRrJq-T5F3rCDztArCAtgUQIkw00HdW1hg';
+    use tokenDruoTrait;
 
     public function connecAccount()
     {
@@ -37,7 +38,7 @@ class ConnectAccountController extends Controller
         $response = Http::withHeaders([
             'DRUO-Version' => '2021-11-22',
             'Content-Type' => 'application/json',
-            'Authorization' => 'Bearer '.$this->token,
+            // 'Authorization' => 'Bearer '.$this->token,
         ])->post('https://api.druo.com/accounts/connect', [
             'user_authorization' => true,
             'institution_uuid' => 'ins_9082d56c-4e1d-4967-a828-b7001755e88e',
@@ -66,16 +67,7 @@ class ConnectAccountController extends Controller
 
     public function connectLink()
     {
-        $token = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InpSWGlvX2FPUjBjbDdoQloxZXVzeiJ9.eyJpc3MiOiJodHRwczovL2F1dGguZHJ1by5jb20vIiwic3ViIjoiSGd2aTFKTkR4Q2NmOE9vUG5oVGQwR3puWXRhT1BKQ3dAY2xpZW50cyIsImF1ZCI6Imh0dHBzOi8vZHJ1by1tZXJjaGFudC1hcGkuY29tIiwiaWF0IjoxNzAwNTg0Mjg2LCJleHAiOjE3MDA2NzA2ODQsImF6cCI6IkhndmkxSk5EeENjZjhPb1BuaFRkMEd6bll0YU9QSkN3Iiwic2NvcGUiOiJyZWFkOnRyYW5zYWN0aW9ucyB3cml0ZTp0cmFuc2FjdGlvbnMgcmVhZDpjb25uZWN0IHdyaXRlOmNvbm5lY3Qgd3JpdGU6cGF5bWVudHMgcmVhZDpwYXltZW50cyByZWFkOmNvbm5lY3QtbGluayB3cml0ZTpjb25uZWN0LWxpbmsgd3JpdGU6YWNjb3VudHMgcmVhZDphY2NvdW50cyByZWFkOmVuZC11c2VycyB3cml0ZTplbmQtdXNlcnMiLCJndHkiOiJjbGllbnQtY3JlZGVudGlhbHMifQ.ls5dtsx2A-CGLxN1RhmKh2_QdPyrFFQW_Sq1yiv8NMpwTOVkarxcH9kD0XmzC-Z1PgdqI3rr4fZSybuQsHJtHoZyyG0ywZR2rnzOGoiKGCxnhdgYaHgf6mtmcu-ekJN30BQDNq-w0IkHIHgo2Ecc27IyLXLnuyzwPNANrxW5bOHGeZGBm_FqcMQytzmFHY2Q7dPmuprHSRUV_-Oko0LhGSauHbMSHCNfoxYMsf9LfTSYze0Yk8sxvw4s6IIb9rCqdK2rWaOLQkZHHpgC7Ka1mJbLZUceDZORMXfTjl_05t1dsi_OC-VMkRrJq-T5F3rCDztArCAtgUQIkw00HdW1hg';
-        /* curls */
-       /*  curl --location 'https://api.druo.com/connect/link/create' \
-        --header 'DRUO-Version: 2021-11-22' \
-        --header 'Content-Type: application/json' \
-        --header 'Authorization: Bearer ACCESS_TOKEN' \
-        --data-raw '{
-            "existing_end_user_id": "eur_868d99a5-6578-40cf-8aec-e7a48085fa37",
-            "intro_text": "Connect your account using DRUO to receive or make payments"
-        }' */
+        $token =  $token = $this->accessTokenDruo();;
 
         $response = Http::withHeaders([
             'DRUO-Version' => '2021-11-22',
