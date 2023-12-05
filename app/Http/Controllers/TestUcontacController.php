@@ -72,9 +72,10 @@ class TestUcontacController extends Controller
 
     public function envioHsm()
     {
-            $token = 'VXNlckFQSVF1YW46ODYzMDQzYmQtNDE4Zi00ZjM1LWFlM2YtYmRkMGQyMTcxYThi';
-            $hsm = 'hsm;5e49de34-7eb3-4d38-b017-6c67ec4f5cd5;text;123456789';
-            $destination = '573125620823';
+            $token = 'VXNlckFQSVF1YW46NzJjMTYzYTEtYTVhMy00NjhkLWE1ZjAtYWFkOWMxMjliZjUw';
+            // $hsm = 'hsm;5e49de34-7eb3-4d38-b017-6c67ec4f5cd5;text;123456789'; envio de otp
+            $hsm = 'hsm;e4381fc7-16a0-493e-80e1-82bbefd1175a;text;var'; //envio de link
+            $destination = '573235249616';
         
             $ch = curl_init();
 
