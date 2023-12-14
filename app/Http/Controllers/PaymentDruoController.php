@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Traits\tokenDruoTrait;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
@@ -13,6 +14,10 @@ class PaymentDruoController extends Controller
     {
         $accessToken = $this->accessTokenDruo();
 
+        $fechaActual = Carbon::now('GMT');
+
+        // Agregar un día
+        $fechaConUnDiaMas = $fechaActual->addDay();
 
         $response = Http::withHeaders([
             'DRUO-Version' => '2021-11-22',
@@ -28,6 +33,7 @@ class PaymentDruoController extends Controller
                 'statement_descriptor' => 'NOVO BILLING* INV12324',
                 'auto_send_receipt' => false,
             ],
+            'expiration_date' => $fechaConUnDiaMas
         ]);
         return $response->json();
         if ($response->successful()) {
