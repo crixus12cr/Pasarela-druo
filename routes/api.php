@@ -7,6 +7,7 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PaymentDruoController;
 use App\Http\Controllers\TestUcontacController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,3 +35,12 @@ Route::get('/sendPlantilla', [TestUcontacController::class, 'envioHsm']);
 
 /* checkoutLink */
 Route::get('/send-checkoutLink', [PaymentDruoController::class, 'generateCheckoutLink']);
+
+Route::get('/test', function () {
+
+    $data = 'Hola Mundo 2';
+
+    logger()->channel('custom')->info($data);
+
+    return 'verificar';
+});
