@@ -25,7 +25,7 @@ class SuscripcionDruoController extends Controller
             ])->post('https://api-staging.druo.com/recurring-plans/create', [
                 "description" => "susucripcion de prueba", 
                 "processing_method" => "AUTOMATIC",
-                "start_date" => $fechaActual,
+                "start_date" => Carbon::now(),
                 "end_date" => $fechaActual->addYear(),
                 "total_cycle_count" => "12",
                 "cycle_frequency" => "MONTHLY",
@@ -40,7 +40,7 @@ class SuscripcionDruoController extends Controller
                 "transaction" => [
                     "tenant_id" => "ten_35516d40-ca41-4fa3-885c-d13d0ccdae0a",
                     "type" => "PAYMENT",
-                    // "currency" => "COP",
+                    "currency" => "COP",
                     "amount" => 10000,
                     "statement_descriptor" => "NOVO BILLING* INV12324",
                     "primary_reference" => "Transaction primary reference",
@@ -59,8 +59,8 @@ class SuscripcionDruoController extends Controller
                 $responseData = $response->json();
                 return response()->json($responseData); 
             } else {
-                
-                return response()->json(['error' => 'Error en la solicitud'], $statusCode);
+                $errorData = $response->json();
+                return response()->json(['error' => 'Error en la solicitud', 'details' => $errorData], $statusCode);
             }
         } catch (Exception $e) {
             return response()->json(['error' => 'Error en la solicitud: ' . $e->getMessage()], 500);
