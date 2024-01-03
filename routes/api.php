@@ -5,6 +5,7 @@ use App\Http\Controllers\EndUserController;
 use App\Http\Controllers\OauthController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PaymentDruoController;
+use App\Http\Controllers\SuscripcionDruoController;
 use App\Http\Controllers\TestUcontacController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -44,3 +45,6 @@ Route::get('/test', function () {
 
     return 'verificar';
 });
+
+/* suscripciones recurrentes con druo */
+Route::get('/suscripcion', [SuscripcionDruoController::class, 'suscripciones']);
