@@ -75,7 +75,7 @@ class TestUcontacController extends Controller
             $token = $this->tokenUcontac();
             // $hsm = 'hsm;5e49de34-7eb3-4d38-b017-6c67ec4f5cd5;text;123456789'; envio de otp
             // $hsm = 'hsm;e4381fc7-16a0-493e-80e1-82bbefd1175a;text;var'; //envio de link
-            $hsm = 'hsm;431fe9ef-2a1d-4b42-8699-70caf6a19236;text;var1;var2;var3;var4';
+            $hsm = 'hsm;431fe9ef-2a1d-4b42-8699-70caf6a19236;text;var1;var2;var3;var4'; // cancelacion de asistencia
             $destination = '573125620823';
         
             $ch = curl_init();
