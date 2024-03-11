@@ -75,7 +75,8 @@ class ConnectAccountController extends Controller
             'Authorization' => 'Bearer '.$token,
         ])->post('https://api.druo.com/connect/link/create',[
             "existing_end_user_id" => "eur_b224dc9c-6130-426c-8f63-57dce4832d98",
-            "intro_text" =>  "Hola Dario esta es una prueba para el link, en cuenta pon los digitos terminados en 4"
+            "intro_text" =>  "Hola Dario esta es una prueba para el link, en cuenta pon los digitos terminados en 4",
+            "redirect_url" => "https://www.youtube.com/watch?v=F9YJS4nTNsM&list=RDmhJh5_6MuCk&index=14"
         ]);
 
         if ($response->successful()) {
