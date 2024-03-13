@@ -28,13 +28,13 @@ class SuscripcionDruoController extends Controller
             ])->post('https://api-staging.druo.com/recurring-plans/create', [
                 "description" => "susucripcion de prueba", 
                 "processing_method" => "AUTOMATIC",
-                "start_date" => "2024-03-14",
-                "end_date" => "2025-03-14",
-                "total_cycle_count" => "12",
+                "start_date"=> "2024-03-14",
+                "end_date"=> "2024-05-14",
+                "total_cycle_count"=> "3",
                 "cycle_frequency" => "MONTHLY",
                 "origin_account_id" => "acc_2a421645-af9a-4797-a142-8b7d5a048274",
                 "destination_account_id" => "acc_78a1c219-0a22-4a02-921a-126000c3cb3a",
-                "statement_descriptor" => "suscripcion de prueba",
+                "statement_descriptor" => "suscripcion de prueba 1",
                 "primary_reference" => "ABC123",
                 "secondary_reference" => "otra referencia",
                 "metadata" => [
@@ -46,11 +46,10 @@ class SuscripcionDruoController extends Controller
                     "currency" => "COP",
                     "amount" => 10000,
                     "statement_descriptor" => "NOVO BILLING* INV12324",
-                    "primary_reference" => "Transaction primary reference",
-                    "secondary_reference" => "Transaction secondary reference",
+                    "primary_reference" => "ABC123",
+                    "secondary_reference" => "bj39fhow39fhqp3f0hfae4344",
                     "metadata" => [
-                        "transaction_xyz" => "JOHN SMITH",
-                        "id_user" => "69440"
+                        "order_id" => "6735"
                     ]
                 ],
                 "existing_end_user_id" => "eur_a535b3a1-c8e3-4c60-9f27-a77f48c32109"
