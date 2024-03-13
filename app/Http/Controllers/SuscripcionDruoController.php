@@ -16,7 +16,10 @@ class SuscripcionDruoController extends Controller
         // return 'hola mundo';
         $accessToken = $this->accessTokenDruo();
 
-        $fechaActual = Carbon::now('GMT');
+        $hoy = Carbon::now()->format('Y-m-d');
+
+        $anual = Carbon::parse($hoy)->addYear();
+        
 
         try {
             $response = Http::withHeaders([
@@ -25,8 +28,8 @@ class SuscripcionDruoController extends Controller
             ])->post('https://api-staging.druo.com/recurring-plans/create', [
                 "description" => "susucripcion de prueba", 
                 "processing_method" => "AUTOMATIC",
-                "start_date" => Carbon::now(),
-                "end_date" => $fechaActual->addYear(),
+                "start_date" => "2024-03-14",
+                "end_date" => "2025-03-14",
                 "total_cycle_count" => "12",
                 "cycle_frequency" => "MONTHLY",
                 "origin_account_id" => "acc_2a421645-af9a-4797-a142-8b7d5a048274",
