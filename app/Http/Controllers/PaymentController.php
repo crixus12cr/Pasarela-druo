@@ -76,7 +76,7 @@ class PaymentController extends Controller
             "statement_descriptor" => "Otrasdfdsd",
             "auto_send_receipt" => false,
             "funding_source_id" => "acc_8e2964c3-7ba1-4d15-8887-d7bd71533254",
-            "primary_reference" => "12"
+            "primary_reference" => "1"
         ]);
 
         if ($response->successful()) {
