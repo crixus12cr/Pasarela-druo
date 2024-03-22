@@ -67,7 +67,13 @@ class ConnectAccountController extends Controller
 
     public function connectLink()
     {
-        $token =  $token = $this->accessTokenDruo();;
+        $token =  $token = $this->accessTokenDruo();
+
+        $data = [
+            'subject_id' => 1,
+            'plan_id' => 35,
+            'customer_id' => 89
+        ];
 
         $response = Http::withHeaders([
             'DRUO-Version' => '2021-11-22',
@@ -76,7 +82,8 @@ class ConnectAccountController extends Controller
         ])->post('https://api.druo.com/connect/link/create',[
             "existing_end_user_id" => "eur_b224dc9c-6130-426c-8f63-57dce4832d98",
             "intro_text" =>  "Hola Dario esta es una prueba para el link, en cuenta pon los digitos terminados en 4",
-            "redirect_url" => "https://www.youtube.com/watch?v=F9YJS4nTNsM&list=RDmhJh5_6MuCk&index=14"
+            "redirect_url" => "https://www.youtube.com/watch?v=F9YJS4nTNsM&list=RDmhJh5_6MuCk&index=14",
+            "primary_reference" => "1234567894",
         ]);
 
         if ($response->successful()) {
